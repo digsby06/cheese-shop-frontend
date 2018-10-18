@@ -1,0 +1,30 @@
+{
+  "name": "mobx-cart",
+  "version": "1.0.0",
+  "description": "Store built with React, Mobx, and Next",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "js-cookie": "^2.2.0",
+    "mobx": "^5.5.0",
+    "mobx-react": "^5.3.1",
+    "next": "^7.0.2",
+    "next-routes": "^1.4.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@zeit/next-sass": "^1.0.1",
+    "node-sass": "^4.9.4"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Terrence A. Whittaker Jr.",
+  "license": "ISC"
+}
