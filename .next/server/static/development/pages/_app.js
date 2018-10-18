@@ -213,6 +213,63 @@ var api = new ServerAPI();
 
 /***/ }),
 
+/***/ "./components/NavBar/NavBar.scss":
+/*!***************************************!*\
+  !*** ./components/NavBar/NavBar.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/NavBar/index.js":
+/*!************************************!*\
+  !*** ./components/NavBar/index.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "next/link");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavBar.scss */ "./components/NavBar/NavBar.scss");
+/* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_NavBar_scss__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var NavBar = function NavBar(_ref) {
+  var cartAmount = _ref.cartAmount;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    className: "nav"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav__logo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "MobX Cheese Store")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav__cart"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/cart"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "cart"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cart__amount"
+  }, cartAmount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "cart__image",
+    src: "/static/shopping-cart.png",
+    alt: "Shopping cart"
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NavBar);
+
+/***/ }),
+
 /***/ "./config.js":
 /*!*******************!*\
   !*** ./config.js ***!
@@ -246,12 +303,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "next/link");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-cookie */ "js-cookie");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store */ "./store.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store */ "./store.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var _components_NavBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/NavBar */ "./components/NavBar/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -274,9 +330,9 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
-
  // required here for hot reload
 // import css from "../styles/layout.sass"
+
 
 
 
@@ -299,18 +355,18 @@ function (_App) {
   _createClass(StoreApp, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      _config__WEBPACK_IMPORTED_MODULE_7__["default"].queryProducts().then(function (products) {
-        return _store__WEBPACK_IMPORTED_MODULE_6__["store"].setProducts(products);
+      _config__WEBPACK_IMPORTED_MODULE_6__["default"].queryProducts().then(function (products) {
+        return _store__WEBPACK_IMPORTED_MODULE_5__["store"].setProducts(products);
       });
       this.handleCookies();
     }
   }, {
     key: "handleCookies",
     value: function handleCookies() {
-      var cart = js_cookie__WEBPACK_IMPORTED_MODULE_5___default.a.getJSON('cart');
+      var cart = js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.getJSON('cart');
 
       if (typeof cart !== 'undefined') {
-        _store__WEBPACK_IMPORTED_MODULE_6__["store"].persistCart(cart);
+        _store__WEBPACK_IMPORTED_MODULE_5__["store"].persistCart(cart);
       }
     }
   }, {
@@ -325,13 +381,9 @@ function (_App) {
       }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("link", {
         rel: "shortcut icon",
         href: "/static/favicon.ico"
-      })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h1", null, "MobX Cheese Store")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
-        className: "shopping-cart",
-        src: "/static/shopping-cart.png",
-        alt: "Shopping cart"
+      })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_NavBar__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        cartAmount: _store__WEBPACK_IMPORTED_MODULE_5__["store"].cartAmount
       }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: "cart-amount"
-      }, _store__WEBPACK_IMPORTED_MODULE_6__["store"].cartAmount)))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "outer"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("article", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, pageProps))));
     }

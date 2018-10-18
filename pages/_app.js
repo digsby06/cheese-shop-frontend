@@ -1,8 +1,7 @@
-import App, {Container} from 'next/app'
-import { observer } from "mobx-react"
+import App, { Container } from 'next/app'
+import { observer } from 'mobx-react'
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import Cookies from 'js-cookie'
 
 // required here for hot reload
@@ -11,6 +10,7 @@ import Cookies from 'js-cookie'
 import { store } from "../store"
 import api from "../config"
 
+import NavBar from '../components/NavBar'
 
 class StoreApp extends App {
 
@@ -32,7 +32,6 @@ class StoreApp extends App {
         }
     }
 
-
     render () {
         const {Component, pageProps} = this.props;
 
@@ -45,18 +44,7 @@ class StoreApp extends App {
                     <link rel="shortcut icon" href="/static/favicon.ico" />
                 </Head>
 
-                <div>
-                    <nav>
-                        <div>
-                            <h1>MobX Cheese Store</h1>
-                        </div>
-
-                        <div>
-                            <img className="shopping-cart" src="/static/shopping-cart.png" alt="Shopping cart" />
-                            <div className="cart-amount">{store.cartAmount}</div>
-                        </div>
-                    </nav>
-                </div>
+                <NavBar cartAmount={store.cartAmount} />
 
                 <div className="outer">
                     <article>
