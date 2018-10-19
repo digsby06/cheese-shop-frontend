@@ -2,9 +2,11 @@ import { observable, computed } from "mobx"
 import { onError } from "mobx-react"
 
 class Store {
-    @observable products = [];
-    @observable cart = [];
+    // Observables:
+    @observable products = []
+    @observable cart = []
 
+    // Computed properties:
     @computed get allProducts() {
         return this.products;
     }
@@ -27,6 +29,7 @@ class Store {
         return amount
     }
 
+    // Actions:
     emptyCart() {
         this.cart = [];
     }
@@ -65,12 +68,12 @@ class Store {
             id: item.id,
             quantity
         })
-
-        console.log('Added', this.cart);
     }
 
     prepareCart(item, quantity) {
         const update = this.isItemInCart(item.id)
+
+        // Check if the update array is empty
 
         if (!update.length) {
             this.addToCart(item, quantity)

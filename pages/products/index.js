@@ -1,8 +1,9 @@
 import axios from 'axios'
-import uuid from 'uuid'
 import Link from 'next/link'
 
 import api from '../../config'
+import './Products.scss'
+import ProductsGrid from '../../components/ProductsGrid'
 
 class Products extends React.Component {
 
@@ -15,28 +16,17 @@ class Products extends React.Component {
 
   render () {
     return (
-      <div>
-        <p>Store has {this.props.items.length} products</p>
-
-        {this.props.items.map(item => (
-            <div key={uuid()}>
-                <div>
-                    <h1>{item.attributes.product}</h1>
-                    <img src={item.attributes.image} alt={item.attributes.product} />
-                </div>
-
-                <div>
-                    <Link prefetch href={`/product/${item.id}`}><a className="product__btn">See Item</a></Link>
-                </div>
-
-                <p>{item.attributes.price}</p>
-            </div>
-        ))}
-
         <div>
-          <Link prefetch href="/"><a className="back__btn">Go to homepage</a></Link>
+            <div className="info">
+                <p>Showing {this.props.items.length} products</p>
+            </div>
+
+            <ProductsGrid items={this.props.items} />
+
+            <div className="navigation">
+              <Link prefetch href="/"><a className="back__btn">Go to homepage</a></Link>
+            </div>
         </div>
-      </div>
     )
   }
 }

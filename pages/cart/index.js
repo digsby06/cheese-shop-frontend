@@ -41,6 +41,10 @@ class Cart extends React.Component {
               <a className="btn" onClick={this.emptyCart}>Empty Cart</a>
           </div>
 
+          <div className="navigation">
+            <Link prefetch href="/products"><a className="back__btn">Shop More</a></Link>
+          </div>
+
       </div>
     )
   }
