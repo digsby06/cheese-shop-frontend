@@ -2,10 +2,12 @@ import axios from 'axios'
 import Link from 'next/link'
 import uuid from 'uuid'
 import Cookies from 'js-cookie'
+import { observer } from 'mobx-react'
 
 import api from '../../config'
 import { store } from '../../store'
 
+import './Product.scss'
 
 class Product extends React.Component {
 
@@ -53,15 +55,27 @@ class Product extends React.Component {
     render () {
 
         return (
-          <div>
-              <div>
-                  <h1>{this.props.item.attributes.product}</h1>
-                  <img src={this.props.item.attributes.image} alt={this.props.item.attributes.product} />
-              </div>
+          <div className="ProductPage">
 
-              <div>
-                  <p>{this.props.item.attributes.price} /{this.props.item.attributes.unit}</p>
-                  <p>{this.props.item.attributes.desc}</p>
+              <div className="product-info">
+                  <div className="product-feature">
+                      <img src={this.props.item.attributes.image} alt={this.props.item.attributes.product} />
+                  </div>
+
+                  <div className="product-content">
+                      <div className="product-content__copy">
+                          <h1>{this.props.item.attributes.product}</h1>
+
+                          <p>{this.props.item.attributes.price} /{this.props.item.attributes.unit}</p>
+                          <p>{this.props.item.attributes.desc}</p>
+                      </div>
+
+                      <div className="product-content__cart">
+                          <div>
+
+                          </div>
+                      </div>
+                  </div>
               </div>
 
               <div>
@@ -82,4 +96,4 @@ class Product extends React.Component {
     }
 }
 
-export default Product;
+export default observer(Product);

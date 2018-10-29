@@ -12,6 +12,8 @@ import api from "../config"
 
 import NavBar from '../components/NavBar'
 
+import '../styles/main.scss'
+
 class StoreApp extends App {
 
     constructor(props) {

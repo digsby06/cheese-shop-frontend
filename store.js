@@ -15,6 +15,7 @@ class Store {
         return this.cart;
     }
 
+
     @computed get cartAmount() {
         let amount;
 
@@ -27,6 +28,21 @@ class Store {
         }
 
         return amount
+    }
+
+    @computed get subtotal() {
+
+        if(!this.cart.length) {
+          return 0;
+        } else {
+          let vals = []
+
+          for (let i = 0; i < this.cart.length; i++) {
+              vals.push(this.cart[i].details.price * this.cart[i].quantity)
+          }
+
+          return vals.reduce((prev, curr) => prev + curr);
+        }
     }
 
     // Actions:
@@ -54,6 +70,7 @@ class Store {
         // remove it and replace with the updated obj
         this.cart.splice(index, 1, {
             id: item.id,
+            details: item.attributes,
             quantity
         })
     }
@@ -64,8 +81,10 @@ class Store {
     }
 
     addToCart(item, quantity) {
+      console.log('From store', item);
         this.cart.push({
             id: item.id,
+            details: item.attributes,
             quantity
         })
     }

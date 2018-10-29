@@ -1,0 +1,38 @@
+.BasicButton {
+    border: 1px gray solid;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    margin: 0.5rem;
+    width: 175px;
+    padding: 1rem 2rem;
+    justify-content: center;
+
+    a {
+        outline: none;
+    }
+}
+
+
+.BasicButton.btn-primary {
+    background-color: #F1A208;
+    border-color: #DC9408;
+    color: #fff;
+    font-family: sans-serif;
+
+    &:hover {
+        background-color: #F4BB4B;
+    }
+}
+
+
+.BasicButton.btn-warning {
+    background-color: #EE4266;
+    border-color: #D93C5D;
+    color: #fff;
+    font-family: sans-serif;
+
+    &:hover {
+        background-color: #EF5373;
+    }
+}

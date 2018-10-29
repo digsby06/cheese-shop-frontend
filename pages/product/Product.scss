@@ -1,0 +1,33 @@
+.ProductPage {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 3rem 0;
+    width: 80%;
+
+    @media (max-width: 1024px) {
+        width: 90%;
+    }
+}
+
+.product-feature {
+    width: 40%;
+
+    img {
+        width: 350px;
+    }
+}
+
+.product-content {
+    width: 40%;
+}
