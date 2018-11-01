@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Cookies from 'js-cookie'
 import uuid from 'uuid'
 import { observer } from 'mobx-react'
-import DevTools from 'mobx-react-devtools';
 
 import { store } from '../../store'
 
@@ -12,85 +11,82 @@ import CartItem from '../../components/CartItem'
 
 import './Cart.scss'
 
-class Cart extends React.Component {
-  constructor(props) {
-      super(props)
+const checkout = () => {
+    console.log('Checking out now')
+}
 
-      this.state = {
-          subtotal: 0
-      }
+const emptyCart = () => {
+    Cookies.remove('cart')
+    store.emptyCart()
+}
 
-      this.emptyCart = this.emptyCart.bind(this);
-      this.checkout = this.checkout.bind(this);
-  }
-
-  checkout() {
-      console.log('Checking out now')
-  }
-
-  emptyCart() {
-      Cookies.remove('cart')
-      store.emptyCart()
-  }
-
-  render () {
-    console.log('Subtotal', store.subtotal);
+const Cart = () => {
+    const buttonText = store.productsInCart.length > 0 ? 'Shop More' : 'Add Items';
 
     return (
-      <div className="CartPage">
-          <div className="CartPage-wrapper">
+        <div className="CartPage">
+            <div className="CartPage-wrapper">
 
-                <div>
-                    <h1>Shopping Cart</h1>
-                </div>
+                  <div>
+                      <h1>Shopping Cart</h1>
+                  </div>
 
-                <div className="cart-wrapper">
-                    <main className="cart-items">
-                          { !store.productsInCart.length ?
-                              (
-                                <div className="cart-items__empty">
-                                    No Items In Cart
-                                </div>
+                  <div className="cart-wrapper">
+                      <main className="cart-items">
+
+                            {
+                              store.productsInCart.length > 0 && (
+                                  <div className="cart-header">
+                                      <p className="cart-header__title">Product</p>
+                                      <p className="cart-header__title">Price</p>
+                                      <p className="cart-header__title">Quantity</p>
+                                  </div>
                               )
-                            : store.productsInCart.map(product => (<CartItem key={uuid()} product={product} />))
-                          }
-                    </main>
+                            }
 
-                    <aside className="cart-checkout">
+                            { !store.productsInCart.length ?
+                                (
+                                  <div className="cart-items__empty">
+                                      No Items In Cart
+                                  </div>
+                                )
+                              : store.productsInCart.map(product => (<CartItem key={uuid()} product={product} />))
+                            }
+                      </main>
 
-                      { store.productsInCart.length > 0 && (
-                          <div>
-                              { store.subtotal }
+                      <aside className="cart-checkout">
 
-                              <BasicButton
-                                  text="Checkout"
-                                  handleClick={this.checkout}
-                                  type="primary"
-                              />
+                        { store.productsInCart.length > 0 && (
+                            <div className="cart-checkout__active">
+                                <div className="cart-subtotal">
+                                    <h1>Subtotal</h1>
+                                    <p>${ store.subtotal }</p>
+                                </div>
 
-                              <BasicButton
-                                  text="Empty Cart"
-                                  handleClick={this.emptyCart}
-                                  type="warning"
-                              />
-                          </div>
-                      )}
-                    </aside>
-                </div>
+                                <BasicButton
+                                    text="Checkout"
+                                    handleClick={checkout}
+                                    type="primary"
+                                />
 
+                                <BasicButton
+                                    text="Empty Cart"
+                                    handleClick={emptyCart}
+                                    type="warning"
+                                />
+                            </div>
+                        )}
+                      </aside>
+                  </div>
 
+                  <div className="navigation">
+                      <Link prefetch href="/products"><a className="back__btn">{buttonText}</a></Link>
+                  </div>
 
-
-                <div className="navigation">
-                  <Link prefetch href="/products"><a className="back__btn">Shop More</a></Link>
-                </div>
-
-                <DevTools />
-          </div>
-
-      </div>
-    )
-  }
+            </div>
+        </div>
+    );
 }
+
 
 export default observer(Cart);

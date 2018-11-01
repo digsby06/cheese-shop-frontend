@@ -43,7 +43,7 @@ class StoreApp extends App {
                     <title>MobX Cheese Store</title>
 
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="shortcut icon" href="/static/favicon.ico" />
+                    <link rel="shortcut icon" href="/static/cheese.png" />
                 </Head>
 
                 <NavBar cartAmount={store.cartAmount} />

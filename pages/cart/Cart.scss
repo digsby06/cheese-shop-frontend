@@ -30,8 +30,6 @@
 }
 
 .cart-items {
-    border: 1px solid #efefef;
-
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -41,9 +39,31 @@
     }
 }
 
-.cart-checkout {
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 130px;
+    padding-top: 1rem;
+}
+
+.cart-header__title {
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
     width: 30%;
+}
+
+.cart-checkout {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 30%;
+
     @media (max-width: 1024px) {
         width: 100%;
     }
+}
+
+.cart-checkout__active h1 {
+    margin: 0;
 }

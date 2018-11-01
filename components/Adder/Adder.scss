@@ -1,0 +1,35 @@
+.adder-wrapper {
+    border: 1px solid #DC9408;
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+}
+
+.adder-col.adder-btn {
+    width: 25%;
+}
+
+.adder-col__status {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.adder-col__btn {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.adder-col__btn-add {
+    background-color: #F1A208;
+    color: #fff;
+}
+
+.adder-col__btn-sub {
+    background-color: #F1A208;
+    color: #fff;
+}

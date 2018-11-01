@@ -9,8 +9,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 1rem;
 }
 
+.nav__logo {
+    margin-left: 3rem;
+
+    h1 {
+        margin: 0;
+    }
+}
 .nav__cart {
     margin-right: 3rem;
 

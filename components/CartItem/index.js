@@ -8,15 +8,17 @@ const CartItem = ({ product }) => {
         </div>
 
         <div className="cart-product__details">
-          {product.details.product}
-        </div>
+            <div className="cart-product__name product-cell">
+              {product.details.product}
+            </div>
 
-        <div className="cart-product__price">
-            <span>${product.details.price}</span>
-        </div>
+            <div className="cart-product__price product-cell">
+                <span>${product.details.price}</span>
+            </div>
 
-        <div className="cart-product__quantity">
-            <span>{product.quantity}</span>
+            <div className="cart-product__quantity product-cell">
+                <span>{product.quantity}</span>
+            </div>
         </div>
     </div>
   );

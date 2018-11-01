@@ -11,7 +11,7 @@ const ProductsGrid = ({ items }) => (
                 <div className="product__info">
                     <h1>{item.attributes.product}</h1>
                     <img src={item.attributes.image} alt={item.attributes.product} />
-                    <p>{item.attributes.price} /{item.attributes.unit}</p>
+                    <p>${item.attributes.price} / {item.attributes.unit}</p>
                 </div>
 
                 <div className="product__link">
