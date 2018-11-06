@@ -4,9 +4,6 @@ import React from 'react'
 import Head from 'next/head'
 import Cookies from 'js-cookie'
 
-// required here for hot reload
-// import css from "../styles/layout.sass"
-
 import { store } from "../store"
 import api from "../config"
 

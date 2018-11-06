@@ -3,6 +3,10 @@ import { onError } from "mobx-react"
 
 // MobX is a simple data layer that manages state.
 //
+// ### Data Flow
+//
+// Actions --> State --> Computed Values --> View Updates/Reactions
+//
 // MobX touts that makes it impossible to produce an inconsistent state.
 //
 // In fact, everything that can be derived from the application state
