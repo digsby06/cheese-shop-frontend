@@ -88,5 +88,6 @@ const Cart = () => {
     );
 }
 
+// Using a higher order function here to look for changes in the store
 
 export default observer(Cart);

@@ -2,52 +2,47 @@ import axios from 'axios'
 import Link from 'next/link'
 import { observer } from 'mobx-react'
 import Adder from '../../components/Adder'
+import ShopAll from '../../components/ShopAll'
 
 import api from '../../config'
 
 import './Product.scss'
 
-class Product extends React.Component {
+const Product = ({ item }) => (
+    <div className="ProductPage">
+        <div className="product-info">
+            <div className="product-feature">
+                <img src={item.attributes.image} alt={item.attributes.product} />
+            </div>
 
-    static async getInitialProps ({query}) {
-        const json = await api.getProduct(query.id)
+            <div className="product-content">
+                <div className="product-content__copy">
+                    <h1>{item.attributes.product}</h1>
 
-        return { item: json}
-    }
+                    <p>${item.attributes.price} /{item.attributes.unit}</p>
+                    <p>{item.attributes.desc}</p>
+                </div>
 
-    render () {
+                <div className="product-content__cart">
+                    <Adder
+                        product={item}
+                    />
+                </div>
+            </div>
+        </div>
 
-        return (
-          <div className="ProductPage">
+        <ShopAll
+            text="See All Products"
+            link="/products"
+            type="primary"
+        />
+    </div>
+)
 
-              <div className="product-info">
-                  <div className="product-feature">
-                      <img src={this.props.item.attributes.image} alt={this.props.item.attributes.product} />
-                  </div>
+Product.getInitialProps = async ({query}) => {
+    const json = await api.getProduct(query.id)
 
-                  <div className="product-content">
-                      <div className="product-content__copy">
-                          <h1>{this.props.item.attributes.product}</h1>
-
-                          <p>${this.props.item.attributes.price} /{this.props.item.attributes.unit}</p>
-                          <p>{this.props.item.attributes.desc}</p>
-                      </div>
-
-                      <div className="product-content__cart">
-                          <Adder
-                              product={this.props.item}
-                          />
-                      </div>
-                  </div>
-              </div>
-
-
-              <div>
-                <Link prefetch href="/products"><a className="back__btn">See all products</a></Link>
-              </div>
-          </div>
-        )
-    }
+    return { item: json}
 }
 
 export default observer(Product);

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import api from '../../config'
 import './Products.scss'
 import ProductsGrid from '../../components/ProductsGrid'
+import ShopAll from '../../components/ShopAll'
+
 
 class Products extends React.Component {
 
@@ -16,16 +18,13 @@ class Products extends React.Component {
 
   render () {
     return (
-        <div>
-            <div className="info">
+        <div className="ProductsPage">
+            <div className="ProductsPage-info">
                 <p>Showing {this.props.items.length} products</p>
             </div>
 
             <ProductsGrid items={this.props.items} />
 
-            <div className="navigation">
-              <Link prefetch href="/"><a className="back__btn">Go to homepage</a></Link>
-            </div>
         </div>
     )
   }

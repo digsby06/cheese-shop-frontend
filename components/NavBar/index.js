@@ -7,7 +7,7 @@ const NavBar = ({ cartAmount }) => (
     <div className="nav-wrapper">
         <nav className="nav">
             <div className="nav__logo">
-                <h1>MobX Cheese Store</h1>
+                <Link prefetch href="/"><h1>MobX Cheese Store</h1></Link>                
             </div>
 
             <div className="nav__cart">

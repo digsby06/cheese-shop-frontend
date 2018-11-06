@@ -1,11 +1,12 @@
 .products-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1400px;
-    width: 80%;
+    margin-bottom: 3rem;
+}
 
+.ProductsPage-info {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .product {

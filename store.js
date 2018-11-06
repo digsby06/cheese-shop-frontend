@@ -1,12 +1,50 @@
-import { observable, computed } from "mobx"
+import { autorun, observable, computed } from "mobx"
 import { onError } from "mobx-react"
 
+// MobX is a simple data layer that manages state.
+//
+// MobX touts that makes it impossible to produce an inconsistent state.
+//
+// In fact, everything that can be derived from the application state
+// will be derived automatically.
+//
+// MobX doesn’t run all derivations, but ensures that only computed values that are involved in some
+// reaction are kept in sync with the observable state. Those derivations
+// are called to be reactive.
+//
+// Everything happens synchronously
+//
+// ## Under the hood
+// 1. Stale notifications sent and new values are stored
+// 2. Ready notifications sent that confirms if a value was changed
+// 3. Derivations wait for ready notifications and diffs against stale notifcations to know what to recompute
+// 4. If no ready notifcations indicate a value change, derivations tell observers that they're ready to go!
+//
+//
+// ### Pros
+// 1. It easy to set up and get started.
+// 2. Eliminates inconsistency in state
+// "One should not imperatively act on state changes by using manually defined subscriptions
+// or cursors. This will inevitably lead to bugs as a result of under- or oversubscribing."
+// 3. Aims to limit wasted rendering to 0!
+// 4. Influenced by OOP
+//
+// ### Cons
+// 1. Relies on the use of newer JS features that aren’t widely supported yet (Decorators).
+// 2. Could be difficult to track data changes in larger applications
+//
+// ### Resources
+// [MobX: Ten minute introduction to MobX and React](https://mobx.js.org/getting-started.html)
+// [Becoming fully reactive: an in-depth explanation of MobX](https://hackernoon.com/becoming-fully-reactive-an-in-depth-explanation-of-mobservable-55995262a254)
+
+
 class Store {
-    // Observables:
+    // Observables are any value that can be mutated. Can be objects, primitives, classes, arrays...you name it!
+
     @observable products = []
     @observable cart = []
 
-    // Computed properties:
+    // Computed properties operate on observable values. These bad boys react to state changes.
     @computed get allProducts() {
         return this.products;
     }
@@ -14,7 +52,6 @@ class Store {
     @computed get productsInCart() {
         return this.cart;
     }
-
 
     @computed get cartAmount() {
         let amount;
@@ -45,7 +82,8 @@ class Store {
         }
     }
 
-    // Actions:
+    // Actions do the dirty work and are the primary means to modifying state.
+
     emptyCart() {
         this.cart = [];
     }
@@ -81,7 +119,6 @@ class Store {
     }
 
     addToCart(item, quantity) {
-      console.log('From store', item);
         this.cart.push({
             id: item.id,
             details: item.attributes,
